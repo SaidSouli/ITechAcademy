@@ -17,13 +17,13 @@ Requirements: <PHP, Composer, MySQL, Symfony CLI>
 you only need to run composer install in your terminal because
 Every package i installed (ORM, Security, EasyAdmin, Maker, fixtures, and so on) is recorded in composer.json and composer.lock
 
-1. Clone the repo and `cd` into it
-2. `composer install`
-3. Copy `.env` to `.env.local` and set `DATABASE_URL`
-4. <create the database>
-5. <run the migrations>
-6. <load the fixtures>
-7. <start the server>, then open <URL>
+1. Clone the repo and 'cd' into it
+2. run 'composer install'
+3. Copy '.env' to '.env.local' and set 'DATABASE_URL'
+4. create the database : php bin/console doctrine:database:create
+5. run the migrations : php bin/console create:migration and then  php bin/console doctrine:migration:migrate
+6. load the fixtures : php bin/console doctrine:fixtures:load
+7. start the server : symfony serve, then open <URL>
 
 ## Test accounts
 | Role    | Email | Password |
