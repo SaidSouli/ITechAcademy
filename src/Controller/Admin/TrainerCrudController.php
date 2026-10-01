@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Trainer;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextAreaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
@@ -22,7 +22,7 @@ class TrainerCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('fullname'),
-            TextAreaField::new('bio'),
+            TextareaField::new('bio'),
             TextField::new('photourl'),
             AssociationField::new('courses'),
             

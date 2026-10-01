@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextAreaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -24,15 +24,15 @@ class CourseCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('title'),
-            TextAreaField::new('description'),
+            TextareaField::new('description'),
             TextField::new('price'),
             IntegerField::new('durationHours')
             ->setLabel('Duration (Hours)')
             ->setFormTypeOption('attr',['min'=> 1,] ),
             ChoiceField::new('level')->setChoices([
                 'Beginner' => 'beginner',
-                'Intermediate' => 'Intermediate',
-                'Advanced'=>'advanced'
+                'Intermediate' => 'intermediate',
+                'Advanced'=> 'advanced'
             ]),
             AssociationField::new('trainer'),
             DateTimeField::new('createdAt')->hideOnForm()
