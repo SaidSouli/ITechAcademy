@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Our courses</h1>
+        {% if courses is empty %}
+            <p class="text-muted"> No  courses available for now</p>
+        {% else %}
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <TH>Title</TH>
+                        <TH>Trainer</TH>
+                        <TH>Level</TH>
+                        <TH>Duration</TH>
+                        <TH>Price</TH>
+                        <TH></TH>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{ course.title }}</td>
+                        <td>{{ course.trainer.fullname }}</td>
+                        <td>{{ course.level }}</td>
+                        <td>{{ course.price }}</td>
+                        <td>{{ course.durationHours }}h</td>
+                        <td>
+                            <a href="{{path('app_course_show',{id:course.id})  }}" class="btn btn-sm btn-primary">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

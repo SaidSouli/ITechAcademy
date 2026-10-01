@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ course.title }} {% endblock %} 
+
+{% block body %}
+
+<div class="container mt-4">
+    <a href="{{ path('app_course') }}">&larr;back to courses</a>
+    <h1 class="mt-3">{{  course.title }}</h1>
+    <p class="text-muted">
+        {{ course.level }} &middot; {{ course.durationHours }} hours &middot; {{  course.price }} &euro;
+    </p>
+
+    <p>{{ course.description }}</p>
+    <h3>Trainer</h3>
+    <p><strong>{{ course.trainer.fullname }}</strong></p>
+    <p>{{ course.trainer.bio }}</p>
+
+    <h1>
+        {% if alreadyEnrolled %}
+            <button class="btn btn-success" disabled>Already enrolled</button>
+        {% else %}
+            <form method="post" action="{{ path('app_course_enroll',{id: course.id}) }}">
+                <input type="hidden" name="_token" value="{{ csrf_token('enroll' ~ course.id) }}">
+                <button class="btn btn-primary">Enroll</button>
+            </form>
+        {% endif %}
+    </h1>
+</div>
+
+{% endblock %} 

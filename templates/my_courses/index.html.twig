@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Courses{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>My courses</h1>
+
+    {% if enrollments is empty  %}
+        <p class="text-muted">
+            Your not Enrolled in any course yet
+            <a href="{{ path('app_course') }}">Browse courses</a>
+        </p>
+    {% else %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Trainer</th>
+                <th>Enrolled at </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enrollment in enrollments %}
+                <tr>
+                    <td>{{ enrollment.course.title }}</td>
+                    <td>{{ enrollment.course.trainer.fullname }}</td>
+                    <td>{{ enrollment.enrolledAt|date('d/m/Y') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif  %}
+</div>
+{% endblock %}
